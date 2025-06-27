@@ -1,4 +1,5 @@
 
+
 import React, { useContext, useState, useEffect } from 'react';
 import { ThemeContext, ThemeContextType } from './themeContext'; // Impor dari file baru
 import { Link } from 'react-router-dom';
@@ -261,10 +262,10 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
   useEffect(() => {
     if (isOpen) {
       // Pastikan komponen sudah ter-mount sebelum memulai animasi
-      const timer = setTimeout(() => {
+      const timerId = window.setTimeout(() => {
         setShowContent(true);
       }, 10); // Penundaan kecil dapat membantu memastikan gaya diterapkan
-      return () => clearTimeout(timer);
+      return () => window.clearTimeout(timerId);
     } else {
       setShowContent(false); // Mulai animasi fade-out
     }
@@ -366,7 +367,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
   }
   
   for (let i = startPage; i <= endPage; i++) {
-    pageNumbers.push(i);
+    pageNumbers.push();
   }
 
   return (
